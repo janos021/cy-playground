@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "cypress": "^12.17.1"
+    "cypress": "^12.17.1",
+    "cypress-real-events": "^1.9.1"
   },
   "name": "cy-myd",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
