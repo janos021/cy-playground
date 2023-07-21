@@ -1,3 +1,4 @@
+// https://www.browserstack.com/guide/how-to-test-redirect-with-cypress
 describe( 'redirectdemo', ()=>{
     beforeEach ( ()=>{
 
@@ -6,9 +7,9 @@ describe( 'redirectdemo', ()=>{
     })
 
     it ('tests redirection', ()=>{
-        cy.get('.text-size-16 > .text-lambda-900').click()
-        cy.url().should('be.equals', 'https://www.lambdatest.com/selenium-playground/')
-        cy.title().should('include', 'Selenium Grid')
+        cy.get('.text-size-16 > .text-lambda-900').click() // click on the link
+        cy.url().should('be.equals', 'https://www.lambdatest.com/selenium-playground/') // confirm redirect url
+        cy.title().should('include', 'Selenium Grid') // confirm redirect title
     })
     
 })
