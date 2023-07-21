@@ -1,5 +1,6 @@
 context ('simpleformdemo', () => {
     beforeEach( () =>{
+      
       cy.visit ('https://www.lambdatest.com/selenium-playground/input-form-demo')
     })
     it ('visited correct page', ()=>{
