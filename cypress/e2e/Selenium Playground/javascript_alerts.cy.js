@@ -14,27 +14,35 @@ describe ('test js alerts', ()=>{
             //expect(str).to.equal('Alerte') negative
           })
         })
-    // it ('test js alert2 click ok', { scrollBehavior: false }, ()=>{
-    //     cy.get('.ml-10 > .text-gray-900 > .btn').click()
-    //     cy.on('window:alert', (str) => {
-    //         expect(str).to.equal('Presseraaa a button!')
-    //         //expect(str).to.equal('Presser a button!')
-    //     //click OK
-    //     //cy.get('.swal-button--confirm').click()
-    //     //cy.get('.swal-button--cancel').click()
-    //     //cy.get('#confirm-demo').should('exist').should('contain', 'You pressed Cancel!')
-    //     })
-    // })
-    // it ('test js alert2 click cancel', { scrollBehavior: false }, ()=>{
-    //     cy.get('.ml-10 > .text-gray-900 > .btn').click()
-    //     cy.on('window:alert', (str) => {
-    //         expect(str).to.equal('Press a button!')
-    //         //expect(str).to.equal('Presser a button!')
-    //     //click cancel
-    //     //cy.get('.swal-button--confirm').click()
-    //     cy.get('.swal-button--cancel').click()
-    //     cy.get('#confirm-demo').should('exist').should('contain', 'You pressed Cancel!a')
-    //     })
-    // })
+    it ('test js confirm alert click ok', { scrollBehavior: false }, ()=>{
+        cy.get('.ml-10 > .text-gray-900 > .btn').click()
+        cy.on('window:confirm', (str) => {
+            expect(str).to.equal('Press a button!')
+            //expect(str).to.equal('Presser a button!') negative test
+        //cypress will close the alert
+        cy.get('#confirm-demo').should('exist').should('have.text', 'You pressed OK!')
+        })
+    })
+    it('test js alert confirm click cancel', { scrollBehavior: false }, ()=>{
+        cy.get('.ml-10 > .text-gray-900 > .btn').click()
+        
+        //click cancel
+        cy.on('window:confirm',()=>(false))
+        // confirm that cancel is pressed
+        cy.get('#confirm-demo').should('exist').should('have.text','You pressed Cancel!')
+    })
+    it.only ('test js alert 3 prompt box', { scrollBehavior: false }, ()=>{
+      // stub the entry
+      cy.window().then((wind)=>{
+        cy.stub(wind, 'prompt').returns('firstname')
+      })
+      // https://github.com/cypress-io/cypress/issues/4856
+      cy.get(':nth-child(3) > .text-gray-900 > .btn' ).click({force: true})
+      //default behavior is =  prompt closes automatically
+         
+      // validate that the string 'firstname' is displayed in the box
+      cy.get('#prompt-demo').should('exist').should('have.text',"You have entered \'firstname\' !")
+  })
 })
+
 
