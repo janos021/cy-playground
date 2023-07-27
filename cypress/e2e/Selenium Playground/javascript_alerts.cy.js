@@ -31,7 +31,7 @@ describe ('test js alerts', ()=>{
         // confirm that cancel is pressed
         cy.get('#confirm-demo').should('exist').should('have.text','You pressed Cancel!')
     })
-    it.only ('test js alert 3 prompt box', { scrollBehavior: false }, ()=>{
+    it ('test js alert 3 prompt box', { scrollBehavior: false }, ()=>{
       // stub the entry
       cy.window().then((wind)=>{
         cy.stub(wind, 'prompt').returns('firstname')
