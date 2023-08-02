@@ -1,3 +1,5 @@
 /cypress/e2e/1-getting-started
 /cypress/e2e/2-advanced-examples
 999*
+/cypress/cy-playground.code-workspace
+/node_modules
